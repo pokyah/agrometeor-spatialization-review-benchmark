@@ -4,13 +4,9 @@ author: "t.goossens@cra.wallonie.be"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 always_allow_html: yes
 output:
-  html_document:
-    theme: default
-    toc: yes
-    toc_depth: 6
-    toc_float:
-      collapsed: yes
-      smooth_scroll: yes
+  odt_document:
+    fig_height: 5
+    fig_width: 7
   md_document:
     toc: no
     toc_depth: 6
@@ -32,9 +28,13 @@ output:
     fig_caption: false
     reveal_options:
       previewLinks: false
-  odt_document:
-    fig_height: 5
-    fig_width: 7
+  html_document:
+    theme: default
+    toc: yes
+    toc_depth: 6
+    toc_float:
+      collapsed: yes
+      smooth_scroll: yes
 ---
 
 # Introduction and context
@@ -139,7 +139,14 @@ Their presentations are available in the [KNMI supplementary materials](../asset
 
 Arvalis (Institut du Végétal) has also conducted weather data spatialization research in an agricultural context (crop warning systems). We have organized a knowledge exchange workshop in January 2018. Like the KNMI they have tested various methods with an increasing level of complexity. Our contact Olivier Deudon also uses R-software to conduct his researches.
 
-The key points of their research are available in the [arvalis supplementary materials](../assets/arvalis/)
+The key points of their research are detailed in the [arvalis supplementary materials](../assets/arvalis/). Here we present a brief summary of their methodology and main findings. The aim of their work was to test various methods of weather data spatial interpolation and find the most efficient ones (in terms of accuracy) for various parameters (temperature, relative humidity, rainfall) in the context of their specific AWS network (> 400 stations in France). 
+
+Regarding temperature : 
+* tested methods : Inverse distance, multiple regressions, various kriging methods
+* validation method : splitting the dataset in training set (355 stations) and test set (100 stations)
+* model evaluation criterion : RMSE
+* method with the lowest RMSE for T°: universal kriging
+* used covariates : elevation, surface solar irradiance
 
 ## ZEPP - Germany
 
@@ -148,6 +155,17 @@ As mentioned above, our project is mainly inspired from the ZEPP (ZENTRALSTELLE 
 It is essential to keep in mind the agricultural scope of the platform. The objective is make the best predictions __in cultural area__. It is not a problem if the quality of the prediction is not as high in area were not crops are grown (e.g. Hautes-Fagnes).
 
 What matters most are the quality of the decision support tools outputs based on our weather data rather than the weather data itself. Their comparison of various spatialization technique revealed that for their needs, the most efficient technique is the multiple regression based on elevation, latitude and longitude. This comparison is extensively discussed in the Zeuner PhD Thesis present in the  [ZEPP supplementary material](../assets/ZEPP/)
+
+Here we present a brief summary of their method and main findings. The aim of their work was to provide an operationnal platform able to supply crop alert system models with hourly gridded datasets of temperature and relative humidity accross germany that present the highest accuracy.
+
+Regarding temperature : 
+* tested methods : krigin, IDW, spline, multiple regression
+* validation method : 570 stations 
+* model evaluation criterion: difference hourly interpolated - measured at the location of the stations (+ boxplots)
+* used covaraites : elevation
+* choosen method : multiple regression
+
+
 
 ## RMI - Royal Meteorological Institute - Belgium
 
