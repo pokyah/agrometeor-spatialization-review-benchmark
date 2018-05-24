@@ -4,17 +4,6 @@ author: "t.goossens@cra.wallonie.be"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 always_allow_html: yes
 output:
-  odt_document:
-    fig_height: 5
-    fig_width: 7
-  md_document:
-    toc: no
-    toc_depth: 6
-    variant: markdown_github
-  word_document:
-    toc: no
-    toc_depth: '6'
-  pdf_document: default
   revealjs::revealjs_presentation:
     css:
       - "~/Documents/code/agrometeor/agrometeor-reveal-template/theme/craw.css"
@@ -28,6 +17,17 @@ output:
     fig_caption: false
     reveal_options:
       previewLinks: false
+  md_document:
+    toc: no
+    toc_depth: 6
+    variant: markdown_github
+  word_document:
+    toc: no
+    toc_depth: '6'
+  pdf_document: default
+  odt_document:
+    fig_height: 5
+    fig_width: 7
   html_document:
     theme: default
     toc: yes
